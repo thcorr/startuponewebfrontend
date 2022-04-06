@@ -1,0 +1,20 @@
+body {
+  margin: 10;
+}
+
+.product-detail .product-head {
+  padding: 10px;
+  font-weight: 500;
+}
+
+.product-detail .table th {
+  width: 152px;
+}
+
+.product-ship {
+  height: 15rem;
+}
+
+button {
+  color: #ffffff;
+}

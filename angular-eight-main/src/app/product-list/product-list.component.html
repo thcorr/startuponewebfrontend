@@ -1,0 +1,57 @@
+<br />
+<div class="row">
+  <h4>Filtros rápidos</h4>
+  <a class="button button-space" (click)="getProductByFilter(TYPE_VEGAN)">Vegano</a>
+  <a class="button button-space" (click)="getProductByFilter(TYPE_VEGETARIAN)">Vegetariano</a>
+  <a class="button button-space" (click)="getProductByFilter(TYPE_GLUTEN_FREE)">Sem Glúten</a>
+</div>
+<br />
+<div class="container">
+  <div class="row">
+  <div class="col-md-9">
+    <div class="container">
+        <div class="row">
+          <div
+          class="col-sm-4 mb-2"
+          *ngFor="let product of products | async"
+          >
+          <div class="item">
+            <div class="mb-r">
+              <div class="card card-cascade wider">
+                <a [routerLink]="['/products', product.id]">
+                  <div class="card-img view overlay hm-white-slight">
+                    <img
+                    [src]="product.imageUrl"
+                    class="card-list-img img-fluid"
+                    [alt]="product.name"
+                      />
+                    </div>
+                  </a>
+                  <div class="card-body text-center no-padding">
+                    <p class="card-title">
+                      <strong>
+                        <a
+                          [routerLink]="['/products', product.id]"
+                          routerLinkActive="router-link-active"
+                          >{{ product.name }}</a
+                        >
+                      </strong>
+                    </p>
+                    <p class="card-text">{{ product.description }}</p>
+                    <div class="card-footer">
+                      <span class="left">R$ {{ product.price }}</span>
+                      <span class="right">
+                        <button (click)="addToCart(product)"><i class="material-icons">add_shopping_cart</i></button>
+                          <i class="fa fa-trash"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

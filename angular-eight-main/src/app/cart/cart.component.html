@@ -1,0 +1,68 @@
+<br>
+<h1>Carrinho de compras</h1>
+<br />
+
+<div class="container" *ngIf="items.length > 0; else cartEmpty">
+  <div class="row">
+    <div class="col-8">
+      <div class="row">
+        <div class="col-4" *ngFor="let product of items">
+          <div class="item">
+            <div class="mb-r">
+              <div class="card card-cascade wider">
+                <a [routerLink]="['/products', product.id]">
+                  <div class="view overlay hm-white-slight">
+                    <img
+                      [src]="product.imageUrl"
+                      [alt]="product.name"
+                      class="img-fluid card-list-img"
+                    />
+                    <a>
+                      <div
+                        class="mask waves-effect waves-light"
+                        mdbRippleRadius
+                      ></div>
+                    </a>
+                  </div>
+                </a>
+
+                <div class="card-body text-center no-padding">
+                  <a class="text-muted">
+                    <h5>{{ product.brand }}</h5>
+                  </a>
+                  <h6 class="card-title">
+                    <strong>
+                      <a [routerLink]="['/products', product.id]">
+                        {{ product.name }}</a>
+                    </strong>
+                  </h6>
+
+                  <p class="card-text">{{ product.description }}</p>
+                  <div class="card-footer">
+                    <span class="left">R$ {{ product.price }}</span>
+                    <span class="right">
+                      <a
+                        placement="top"
+                        mdbTooltip="Quick Look"
+                        container="body"
+                        [routerLink]="['/products', product.id]"
+                      >
+                        <i class="fa fa-eye"></i>
+                      </a>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <app-cart-calculator [products]="items"></app-cart-calculator>
+    </div>
+  </div>
+</div>
+<ng-template #cartEmpty>
+  <app-product-not-found></app-product-not-found>
+</ng-template>

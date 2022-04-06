@@ -1,0 +1,28 @@
+<h4 class="d-flex justify-content-between align-items-center mb-3">
+  <span class="text-muted">Seu carrinho</span>
+  <span class="badge badge-primary badge-pill">{{ products.length }}</span>
+</h4>
+<ul class="list-group mb-3">
+  <li
+    class="list-group-item d-flex justify-content-between lh-condensed"
+    *ngFor="let product of products"
+  >
+    <div>
+      <h6 class="my-0">{{ product.name }}</h6>
+    </div>
+    <span class="text-muted text-price">R$ {{ product.price | number : '1.2-2' }}</span>
+  </li>
+  <hr />
+  <li class="list-group-item d-flex justify-content-between">
+    <span>Total</span>
+    <strong>R$ {{ sumOfPrice() | number : '1.2-2' }}</strong>
+  </li>
+
+  <a class="btn btn-primary" [routerLink]="['/']">
+    + Adicionar Itens
+  </a>
+  <br />
+  <a class="btn btn-success" (click)="closeBuy()">
+    FINALIZAR COMPRA
+  </a>
+</ul>
